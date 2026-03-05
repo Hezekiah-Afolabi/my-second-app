@@ -40,10 +40,10 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" className="flex flex-col shrink-0 leading-none" onClick={() => setMenuOpen(false)}>
-          <span className="font-display font-black text-xs tracking-widest text-cyber-green text-glow">
+          <span className="font-display font-black text-sm tracking-widest text-cyber-green text-glow">
             SYNTHORYNE
           </span>
-          <span className="font-mono text-xs tracking-wider mt-0.5">
+          <span className="font-mono text-sm tracking-wider mt-0.5">
             <span className="text-cyber-muted">// </span>
             <span className="gradient-text font-semibold">READRIGHT</span>
           </span>
