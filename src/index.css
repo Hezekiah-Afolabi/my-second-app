@@ -11,7 +11,7 @@
 body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: #071a1a;
+  background-color: #08001f;
   color: #c8d8e8;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -24,7 +24,7 @@ body {
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #071a1a; }
+::-webkit-scrollbar-track { background: #08001f; }
 ::-webkit-scrollbar-thumb { background: #25D366; border-radius: 2px; }
 
 /* Focus */
@@ -47,22 +47,28 @@ button, a, [role="button"] { cursor: pointer; }
   z-index: 0;
 }
 .blob-1 {
-  width: 600px; height: 600px;
-  top: -150px; left: -150px;
-  background: rgba(0, 200, 180, 0.09);
+  width: 700px; height: 700px;
+  top: -200px; left: -200px;
+  background: rgba(220, 0, 180, 0.45);
   animation: blob-drift-1 22s ease-in-out infinite;
 }
 .blob-2 {
-  width: 500px; height: 500px;
-  bottom: -100px; right: -100px;
-  background: rgba(37, 211, 102, 0.08);
+  width: 600px; height: 600px;
+  bottom: -150px; right: -150px;
+  background: rgba(0, 80, 255, 0.4);
   animation: blob-drift-2 26s ease-in-out infinite;
 }
 .blob-3 {
-  width: 350px; height: 350px;
-  top: 40%; left: 40%;
-  background: rgba(0, 150, 140, 0.06);
+  width: 400px; height: 400px;
+  top: 35%; left: 35%;
+  background: rgba(37, 211, 102, 0.3);
   animation: blob-drift-3 18s ease-in-out infinite;
+}
+.blob-4 {
+  width: 300px; height: 300px;
+  top: 10%; right: 10%;
+  background: rgba(255, 100, 0, 0.2);
+  animation: blob-drift-1 30s ease-in-out infinite reverse;
 }
 
 @keyframes blob-drift-1 {

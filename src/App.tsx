@@ -14,6 +14,7 @@ export default function App() {
         <div className="blob blob-1" />
         <div className="blob blob-2" />
         <div className="blob blob-3" />
+        <div className="blob blob-4" />
 
         {/* Grid overlay */}
         <div className="bg-grid" />
