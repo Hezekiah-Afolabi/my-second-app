@@ -39,11 +39,13 @@ export default function Navbar() {
       <div className="max-w-5xl mx-auto px-4 h-14 flex items-center gap-3">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 shrink-0" onClick={() => setMenuOpen(false)}>
-          <span className="font-display font-bold text-lg tracking-wider">
-            <span className="text-cyber-muted text-sm font-mono mr-1">//</span>
-            <span className="text-cyber-text">Read</span>
-            <span className="gradient-text text-glow">Right</span>
+        <Link to="/" className="flex flex-col shrink-0 leading-none" onClick={() => setMenuOpen(false)}>
+          <span className="font-display font-black text-xs tracking-widest text-cyber-green text-glow">
+            SYNTHORYNE
+          </span>
+          <span className="font-mono text-xs tracking-wider mt-0.5">
+            <span className="text-cyber-muted">// </span>
+            <span className="gradient-text font-semibold">READRIGHT</span>
           </span>
         </Link>
 
