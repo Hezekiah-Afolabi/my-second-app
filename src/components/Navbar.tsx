@@ -31,7 +31,7 @@ export default function Navbar() {
     <nav
       className="sticky top-0 z-50 border-b"
       style={{
-        background: 'rgba(3,6,9,0.85)',
+        background: 'rgba(5,13,26,0.85)',
         backdropFilter: 'blur(20px)',
         borderColor: 'rgba(37,211,102,0.15)',
       }}
