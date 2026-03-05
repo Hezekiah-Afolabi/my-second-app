@@ -31,7 +31,7 @@ export default function Navbar() {
     <nav
       className="sticky top-0 z-50 border-b"
       style={{
-        background: 'rgba(5,13,26,0.85)',
+        background: 'rgba(7,26,26,0.88)',
         backdropFilter: 'blur(20px)',
         borderColor: 'rgba(37,211,102,0.15)',
       }}
@@ -78,7 +78,7 @@ export default function Navbar() {
           {open && results.length > 0 && (
             <div
               className="absolute top-full left-0 right-0 mt-1 rounded overflow-hidden z-50"
-              style={{ background: '#080e16', border: '1px solid rgba(37,211,102,0.2)' }}
+              style={{ background: '#0c2424', border: '1px solid rgba(37,211,102,0.2)' }}
             >
               {results.map(s => (
                 <button key={s.id} onClick={() => handleSelect(s)}
@@ -102,7 +102,7 @@ export default function Navbar() {
 
           {open && results.length === 0 && query.length > 1 && (
             <div className="absolute top-full left-0 right-0 mt-1 rounded px-4 py-3 text-sm font-mono text-cyber-muted"
-              style={{ background: '#080e16', border: '1px solid rgba(37,211,102,0.15)' }}>
+              style={{ background: '#0c2424', border: '1px solid rgba(37,211,102,0.15)' }}>
               <span className="text-cyber-green">// </span>no results for "{query}"
             </div>
           )}

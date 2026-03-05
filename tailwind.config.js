@@ -8,9 +8,9 @@ export default {
     extend: {
       colors: {
         cyber: {
-          bg:      '#050d1a',
-          card:    '#0a1628',
-          raised:  '#0f1e35',
+          bg:      '#071a1a',
+          card:    '#0c2424',
+          raised:  '#112e2e',
           border:  'rgba(37,211,102,0.15)',
           bright:  'rgba(37,211,102,0.3)',
           text:    '#c8d8e8',
