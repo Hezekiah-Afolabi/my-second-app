@@ -7,7 +7,6 @@ import SituationCard from '../components/SituationCard';
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
   const category = CATEGORIES.find(c => c.id === categoryId);
-
   if (!category) return <Navigate to="/" replace />;
 
   const situations = getSituationsByCategory(category.id);
@@ -15,52 +14,42 @@ export default function CategoryPage() {
   const comingSoon = situations.filter(s => s.books.length === 0);
 
   return (
-    <main className="max-w-2xl mx-auto px-4 py-6 animate-fade-in">
-      {/* Back */}
-      <Link
-        to="/"
-        className="inline-flex items-center gap-1.5 text-xs font-mono text-cyber-dim hover:text-cyber-green mb-6 transition-colors"
-      >
-        <ArrowLeft className="w-3.5 h-3.5" />
-        ../home
+    <main className="max-w-2xl mx-auto px-4 sm:px-8 py-10">
+      <Link to="/"
+        className="inline-flex items-center gap-1.5 text-xs font-mono text-cyber-muted hover:text-cyber-green mb-8 transition-colors fade-up">
+        <ArrowLeft className="w-3.5 h-3.5" /> ../home
       </Link>
 
       {/* Header */}
-      <div className="mb-8">
-        <p className="font-mono text-xs text-cyber-green mb-2">// category</p>
-        <div className="flex items-center gap-3 mb-2">
-          <span className="text-4xl">{category.emoji}</span>
-          <h1 className="font-display text-2xl font-bold text-cyber-text">{category.name}</h1>
+      <div className="mb-10 fade-up-d1">
+        <p className="font-mono text-xs text-cyber-green mb-3">// category_selected</p>
+        <div className="flex items-center gap-4 mb-3">
+          <span className="text-5xl">{category.emoji}</span>
+          <h1 className="font-display font-bold text-2xl text-cyber-text tracking-wide">
+            {category.name}
+          </h1>
         </div>
-        <p className="text-cyber-muted text-sm mb-4">{category.description}</p>
-        <div className="flex gap-4 font-mono text-xs">
-          <span className="text-cyber-dim">{situations.length} situations</span>
+        <p className="text-cyber-muted text-sm mb-5">{category.description}</p>
+        <div className="flex gap-5 font-mono text-xs">
+          <span className="text-cyber-muted">{situations.length} situations</span>
           <span className="text-cyber-green">{withBooks.length} ready</span>
-          <span className="text-cyber-dim">{comingSoon.length} coming_soon</span>
+          <span className="text-cyber-muted">{comingSoon.length} coming_soon</span>
         </div>
-
-        {/* Accent bar */}
-        <div className="mt-4 h-px w-full" style={{ background: category.gradient }} />
+        <div className="mt-5 h-px w-full" style={{ background: category.gradient }} />
       </div>
 
-      {/* Ready situations */}
       {withBooks.length > 0 && (
-        <section className="mb-6">
-          <p className="section-label font-mono text-xs text-cyber-muted uppercase tracking-widest mb-3">
-            ready
-          </p>
+        <section className="mb-8 fade-up-d2">
+          <p className="section-label font-mono text-xs text-cyber-muted uppercase tracking-widest mb-4">ready</p>
           <div className="space-y-2">
             {withBooks.map(s => <SituationCard key={s.id} situation={s} />)}
           </div>
         </section>
       )}
 
-      {/* Coming soon */}
       {comingSoon.length > 0 && (
-        <section>
-          <p className="section-label font-mono text-xs text-cyber-muted uppercase tracking-widest mb-3">
-            coming_soon
-          </p>
+        <section className="fade-up-d3">
+          <p className="section-label font-mono text-xs text-cyber-muted uppercase tracking-widest mb-4">coming_soon</p>
           <div className="space-y-2">
             {comingSoon.map(s => <SituationCard key={s.id} situation={s} />)}
           </div>

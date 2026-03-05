@@ -8,16 +8,18 @@ export default {
     extend: {
       colors: {
         cyber: {
-          bg:      '#0a0a0a',
-          card:    '#0f0f0f',
-          raised:  '#141414',
-          border:  '#1a1a1a',
-          bright:  '#252525',
-          text:    '#e0e0e0',
-          muted:   '#888888',
-          dim:     '#444444',
+          bg:      '#030609',
+          card:    '#080e16',
+          raised:  '#0d1520',
+          border:  'rgba(37,211,102,0.15)',
+          bright:  'rgba(37,211,102,0.3)',
+          text:    '#c8d8e8',
+          muted:   '#4a6070',
+          dim:     '#2a3a48',
           green:   '#25D366',
           'green-dim': '#1a9e4a',
+          purple:  '#bf5fff',
+          pink:    '#ff2d6b',
         },
         warm: {
           50:  '#fdf8f0',
@@ -57,7 +59,7 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"JetBrains Mono"', '"Fira Code"', 'monospace'],
+        display: ['Orbitron', 'sans-serif'],
         body: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
