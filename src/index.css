@@ -185,10 +185,8 @@ button, a, [role="button"] { cursor: pointer; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 .cursor-blink { animation: blink 1s step-end infinite; }
 
-@keyframes glitch {
-  0%,90%,100% { clip-path: none; transform: none; }
-  91% { clip-path: polygon(0 20%,100% 20%,100% 30%,0 30%); transform: translate(-3px,0); }
-  93% { clip-path: polygon(0 60%,100% 60%,100% 70%,0 70%); transform: translate(3px,0); }
-  95% { clip-path: none; transform: none; }
+@keyframes neon-pulse {
+  0%, 100% { opacity: 1; filter: brightness(1); }
+  50%       { opacity: 0.82; filter: brightness(1.15); }
 }
-.glitch { animation: glitch 5s ease-in-out infinite; }
+.glitch { animation: neon-pulse 3s ease-in-out infinite; }
