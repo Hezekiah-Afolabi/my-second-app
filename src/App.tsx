@@ -1,12 +1,20 @@
+import { useState } from 'react';
 import { HashRouter as BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import InstallPrompt from './components/InstallPrompt';
+import SplashScreen from './components/SplashScreen';
 import Home from './pages/Home';
 import CategoryPage from './pages/CategoryPage';
 import SituationPage from './pages/SituationPage';
 import ReadingListPage from './pages/ReadingListPage';
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  if (showSplash) {
+    return <SplashScreen onDone={() => setShowSplash(false)} />;
+  }
+
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-cyber-bg text-cyber-text relative">
