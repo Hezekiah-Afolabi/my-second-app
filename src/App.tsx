@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { HashRouter as BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import InstallPrompt from './components/InstallPrompt';
 import SplashScreen from './components/SplashScreen';
 import Home from './pages/Home';
 import CategoryPage from './pages/CategoryPage';
@@ -34,7 +33,6 @@ export default function App() {
         {/* App content */}
         <div className="relative z-10">
           <Navbar />
-          <InstallPrompt />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/category/:categoryId" element={<CategoryPage />} />
