@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, BookMarked, X, Menu } from 'lucide-react';
+import { Search, BookMarked, X, Menu, Download } from 'lucide-react';
 import { searchSituations } from '../data/situations';
 import type { Situation } from '../types';
+import { useInstallPrompt, isIOS } from '../hooks/useInstallPrompt';
 
 export default function Navbar() {
   const [query, setQuery] = useState('');
@@ -10,6 +11,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { canInstall, hasNativePrompt, install } = useInstallPrompt();
 
   const handleSearch = (value: string) => {
     setQuery(value);
@@ -25,6 +27,13 @@ export default function Navbar() {
   const handleSelect = (situation: Situation) => {
     setQuery(''); setResults([]); setOpen(false);
     navigate(`/situation/${situation.id}`);
+  };
+
+  const handleInstall = () => {
+    if (hasNativePrompt) {
+      install();
+    }
+    // On iOS or non-native: InstallPrompt banner handles the guide
   };
 
   return (
@@ -107,8 +116,33 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Desktop */}
-        <div className="hidden sm:flex items-center">
+        {/* Desktop nav */}
+        <div className="hidden sm:flex items-center gap-2">
+          {canInstall && (
+            <button
+              onClick={handleInstall}
+              title={isIOS() ? 'See install instructions below' : 'Install app'}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono font-semibold transition-all"
+              style={{
+                color: '#25D366',
+                border: '1px solid rgba(37,211,102,0.5)',
+                background: 'rgba(37,211,102,0.07)',
+                boxShadow: '0 0 12px rgba(37,211,102,0.18)',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'rgba(37,211,102,0.15)';
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(37,211,102,0.35)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'rgba(37,211,102,0.07)';
+                e.currentTarget.style.boxShadow = '0 0 12px rgba(37,211,102,0.18)';
+              }}
+            >
+              <Download className="w-3.5 h-3.5" />
+              Install
+            </button>
+          )}
+
           <Link to="/reading-list"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-mono text-cyber-muted transition-all hover:text-cyber-green"
             style={{ border: '1px solid transparent' }}
@@ -127,8 +161,23 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* Mobile menu */}
       {menuOpen && (
-        <div className="sm:hidden px-4 py-3" style={{ borderTop: '1px solid rgba(37,211,102,0.1)' }}>
+        <div className="sm:hidden px-4 py-3 flex flex-col gap-1" style={{ borderTop: '1px solid rgba(37,211,102,0.1)' }}>
+          {canInstall && (
+            <button
+              onClick={() => { setMenuOpen(false); handleInstall(); }}
+              className="flex items-center gap-2 px-3 py-2.5 rounded text-sm font-mono font-semibold w-full transition-all"
+              style={{
+                color: '#25D366',
+                border: '1px solid rgba(37,211,102,0.45)',
+                background: 'rgba(37,211,102,0.07)',
+              }}
+            >
+              <Download className="w-4 h-4" />
+              Install App
+            </button>
+          )}
           <Link to="/reading-list" onClick={() => setMenuOpen(false)}
             className="flex items-center gap-2 px-3 py-2 text-sm font-mono text-cyber-muted hover:text-cyber-green">
             <BookMarked className="w-4 h-4 text-cyber-green" />
